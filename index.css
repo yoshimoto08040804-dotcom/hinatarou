@@ -1,0 +1,348 @@
+/* --- 全体の基本設定 --- */
+:root {
+    --primary-color: #fca311;     /* 温かみのあるオレンジ */
+    --secondary-color: #ffebe0;   /* 薄いアプリコット（背景用） */
+    --text-color: #4a3e3d;        /* 優しいダークブラウン */
+    --bg-main: #fffdf9;           /* 生成り色・アイボリー */
+    --bg-card: #ffffff;
+    --accent-color: #e76f51;      /* アクセントの濃いオレンジ */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* スムーズスクロール */
+}
+
+body {
+    font-family: 'Zen Maru Gothic', 'Kiwi Maru', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+/* --- コンテナと共通セクション --- */
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.section {
+    padding: 40px 0;
+}
+
+.bg-light {
+    background-color: var(--secondary-color);
+    border-radius: 40px; /* 全体的に丸みを持たせる */
+    margin: 20px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    color: var(--accent-color);
+}
+
+.section-title::after {
+    content: '🎹';
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.section-desc {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    font-size: 1.1rem;
+}
+
+/* --- ボタン --- */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 35px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(252, 163, 17, 0.3);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* --- ヘッダー --- */
+header {
+    background-color: rgba(255, 253, 249, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.4rem;
+    color: var(--accent-color);
+    font-family: 'Kiwi Maru', sans-serif;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* --- メインビジュアル (Hero) --- */
+.hero {
+    background: linear-gradient(rgba(255, 235, 224, 0.6), rgba(255, 253, 249, 1)), 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="5" fill="%23fca311" opacity="0.15"/></svg>');
+    /* 背景に優しい水玉模様の簡易SVGパターンを敷いています */
+    background-size: auto, 40px 40px;
+    padding: 120px 0 80px 0;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    line-height: 1.4;
+    font-family: 'Kiwi Maru', sans-serif;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 35px;
+}
+
+/* --- プロフィール --- */
+.profile-layout {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.profile-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.image-placeholder {
+    width: 250px;
+    height: 250px;
+    background-color: var(--secondary-color);
+    border-radius: 50%; /* 丸い写真枠 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    border: 5px solid white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+.profile-text {
+    flex: 2;
+}
+
+.profile-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.nickname {
+    color: var(--accent-color);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.profile-text h4 {
+    margin: 20px 0 5px 0;
+    color: var(--primary-color);
+}
+
+.profile-text ul {
+    list-style-type: '✨ ';
+    padding-left: 20px;
+}
+
+/* --- 活動カード --- */
+.cards {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 1;
+    background-color: var(--bg-card);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+/* --- フォーム --- */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: #fafafa;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+.submit-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.thanks-message {
+    display: none; /* 初期状態は非表示 */
+    text-align: center;
+    background-color: var(--secondary-color);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.thanks-message h3 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+/* --- フッター --- */
+footer {
+    background-color: #4a3e3d;
+    color: #fffdf9;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.9rem;
+    margin-top: 60px;
+}
+
+/* --- レスポンシブ対応 (スマホ用) --- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .profile-layout {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .profile-text ul {
+        display: inline-block;
+        text-align: left;
+    }
+    
+    .cards {
+        flex-direction: column;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+}
