@@ -4,28 +4,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (form) {
         form.addEventListener('submit', (e) => {
-            // 通常のページ遷移（送信）をストップ
+            // 通常のページ遷移をストップ
             e.preventDefault();
 
-            // 入力された値を取得（将来的にサーバーへ送信する際に使用できます）
-            const facilityName = document.getElementById('facility-name').value;
-            const clientName = document.getElementById('client-name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+            // ★ここに通知を受け取りたいメールアドレスを入力してください
+            const YOUR_EMAIL = 'yoshimoto08040804@gmail.com'; 
 
-            // コンソールで確認用（動作テスト用）
-            console.log('送信された内容:', { facilityName, clientName, email, message });
+            // 連打防止のためボタンを無効化
+            const submitBtn = form.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '送信中...';
 
-            // フォームをフェードアウトして、感謝メッセージを表示する簡易演出
-            form.style.display = 'none';
-            thanksMessage.style.display = 'block';
+            // フォームデータの収集
+            const formData = new FormData(form);
 
-            // サンクスメッセージの位置までなめらかにスクロール
-            thanksMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // FormSubmitのAJAXエンドポイントへ非同期送信
+            fetch(`https://formsubmit.co/ajax/${YOUR_EMAIL}`, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // 送信成功：フォームを消してサンクスメッセージを表示
+                    form.style.display = 'none';
+                    thanksMessage.style.display = 'block';
+                    thanksMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    throw new Error('送信エラー');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('ごめんなさい、送信中にエラーが発生しました。時間をおいてもう一度お試しください。');
+                // エラー時はボタンを元に戻す
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'メッセージを送る';
+            });
         });
     }
 
-    // ナビゲーションのリンクをクリックした際、スマホなどでも確実に滑らかにスクロールさせる設定
+    // ナビゲーションのなめらかなスクロール設定
     const links = document.querySelectorAll('nav a');
     links.forEach(link => {
         link.addEventListener('click', (e) => {
