@@ -16,6 +16,7 @@
 
 html {
     scroll-behavior: smooth; /* スムーズスクロール */
+    font-size: 16px; /* 基準のフォントサイズ */
 }
 
 body {
@@ -86,7 +87,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* --- ヘッダー --- */
+/* --- ヘッダー (PC) --- */
 header {
     background-color: rgba(255, 253, 249, 0.95);
     position: sticky;
@@ -131,54 +132,39 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
-/* --- メインビジュアル (Hero) --- */
+/* --- メインビジュアル (Hero, 画像なしCSSバナー) --- */
 .hero {
-    background-color: var(--bg-main);
+    background: linear-gradient(135deg, rgba(255, 235, 224, 1) 0%, rgba(255, 253, 249, 1) 100%), 
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="4" fill="%23fca311" opacity="0.1"/></svg>');
+    background-size: auto, 40px 40px;
+    padding: 140px 0 100px 0;
     text-align: center;
-    padding: 40px 0 20px 0;
+    margin-bottom: 20px;
+    border-radius: 0 0 50px 50px; /* 下部だけ丸める */
 }
 
-.hero-banner-container {
-    width: 90%;
-    max-width: 1100px; /* バナーが大きくなりすぎないように上限を設定 */
+.hero-content {
+    max-width: 800px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.hero-banner-img {
-    width: 100%;
-    height: auto; /* 縦横比を保ったまま伸縮 */
-    border-radius: 20px; /* ホームページの雰囲気に合わせてバナーの角を丸く */
-    box-shadow: 0 8px 25px rgba(231, 111, 81, 0.15); /* 優しいオレンジ系の影 */
-    display: block;
+.hero h2 {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    line-height: 1.3;
+    font-family: 'Kiwi Maru', sans-serif;
+    text-shadow: 0 2px 5px rgba(231, 111, 81, 0.1);
 }
 
-/* バナーの下のボタンエリア */
-.hero-btn-wrap {
-    margin: 35px 0 15px 0;
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
 }
 
-.hero-btn {
-    font-size: 1.3rem;
-    padding: 14px 50px;
-    box-shadow: 0 6px 15px rgba(252, 163, 17, 0.4);
-}
-
-/* スマホ用の微調整 */
-@media (max-width: 768px) {
-    .hero {
-        padding: 20px 0 10px 0;
-    }
-    .hero-banner-container {
-        width: 95%; /* スマホでは画面いっぱいに近く表示 */
-    }
-    .hero-btn {
-        font-size: 1.1rem;
-        padding: 12px 35px;
-        width: 85%; /* スマホではボタンを押しやすいように横幅を広げる */
-    }
-}
-
-/* --- プロフィール --- */
+/* --- プロフィール (PC) --- */
 .profile-layout {
     display: flex;
     align-items: center;
@@ -190,19 +176,19 @@ nav ul li a:hover {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-width: 250px; /* 横並びのときの最低限の幅を確保 */
 }
 
-/* 陽太くんの写真をがっちり固定して丸く切り抜く設定 */
-.profile-image img {
-    width: 240px !important;       /* 横幅を240pxに固定 */
-    height: 240px !important;      /* 縦幅も240pxに固定して正方形にする */
-    object-fit: cover !important;  /* 縦長写真でも引き伸ばさず、中央を綺麗にくり抜く */
-    object-position: center 35%;   /* くり抜く位置を少し上め（顔の中心）に微調整 */
-    border-radius: 50%;            /* 完全な丸にする */
-    border: 5px solid white;       /* 温かみのある白い太枠 */
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* 柔らかい影 */
+.image-placeholder {
+    width: 250px;
+    height: 250px;
+    background-color: var(--secondary-color);
+    border-radius: 50%; /* 丸い写真枠 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    border: 5px solid white;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
 }
 
 .profile-text {
@@ -230,7 +216,7 @@ nav ul li a:hover {
     padding-left: 20px;
 }
 
-/* --- 活動カード --- */
+/* --- 活動カード (PC) --- */
 .cards {
     display: flex;
     gap: 30px;
@@ -325,42 +311,98 @@ footer {
     background-color: #4a3e3d;
     color: #fffdf9;
     text-align: center;
-    padding: 25px 0;
+    padding: 30px 0;
     font-size: 0.9rem;
     margin-top: 60px;
 }
 
-/* --- レスポンシブ対応 (スマホ用) --- */
+/* --- レスポンシブ対応 (スマホ用: 768px以下) --- */
 @media (max-width: 768px) {
+    html {
+        font-size: 14px; /* 全体的にフォントを少し小さく */
+    }
+
+    .container {
+        padding: 40px 0;
+    }
+
+    /* ヘッダー: 縦並びにしてロゴを中央に */
     .header-container {
         flex-direction: column;
-        gap: 10px;
+        padding: 10px 0;
     }
-    
+
+    .logo {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+
+    nav ul {
+        justify-content: center;
+        width: 100%;
+    }
+
     nav ul li {
-        margin: 0 10px;
+        margin: 0 8px;
     }
-    
+
+    nav ul li a {
+        font-size: 0.95rem;
+    }
+
+    /* Hero: 縦パディングを詰めて文字サイズ調整 */
+    .hero {
+        padding: 100px 0 60px 0;
+        border-radius: 0 0 30px 30px;
+    }
+
     .hero h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        line-height: 1.4;
     }
-    
+
+    .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
+
+    /* タイトル */
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* プロフィール: 縦並びに、テキストは左寄せ */
     .profile-layout {
         flex-direction: column;
-        text-align: center;
         gap: 30px;
+        text-align: center;
     }
-    
+
+    .image-placeholder {
+        width: 180px;
+        height: 180px;
+        font-size: 4rem;
+    }
+
     .profile-text ul {
         display: inline-block;
         text-align: left;
+        font-size: 1.05rem;
     }
-    
+
+    /* 活動カード: 縦並びに、マージン調整 */
     .cards {
         flex-direction: column;
+        gap: 20px;
     }
-    
+
+    .card {
+        padding: 25px;
+    }
+
+    /* フォーム */
     .contact-form {
         padding: 25px;
+        border-radius: 20px;
     }
 }
