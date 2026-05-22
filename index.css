@@ -176,19 +176,19 @@ nav ul li a:hover {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-width: 250px;
 }
 
-.image-placeholder {
-    width: 250px;
-    height: 250px;
-    background-color: var(--secondary-color);
-    border-radius: 50%; /* 丸い写真枠 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
-    border: 5px solid white;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+/* 陽太くんの写真をがっちり固定して丸く切り抜く設定 */
+.profile-image img {
+    width: 240px !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    object-position: center 35% !important;
+    border-radius: 50% !important;
+    border: 5px solid white !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1) !important;
 }
 
 .profile-text {
@@ -378,10 +378,10 @@ footer {
         text-align: center;
     }
 
-    .image-placeholder {
-        width: 180px;
-        height: 180px;
-        font-size: 4rem;
+    /* スマホ用に写真を少しだけ小ぶりに調整 */
+    .profile-image img {
+        width: 180px !important;
+        height: 180px !important;
     }
 
     .profile-text ul {
