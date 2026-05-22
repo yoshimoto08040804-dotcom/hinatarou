@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ひなたろうのピアノボランティア | 吉本陽太 公式サイト</title>
     <link rel="stylesheet" href="index.css">
-    <!-- Google Fonts から温かみのあるフォントを読み込み -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ヘッダー / ナビゲーション -->
     <header>
         <div class="header-container">
             <h1 class="logo">ひなたろうのピアノボランティア</h1>
@@ -21,47 +19,43 @@
                     <li><a href="#home">ホーム</a></li>
                     <li><a href="#profile">プロフィール</a></li>
                     <li><a href="#activity">活動について</a></li>
-                    <li><a href="#contact">お招き・お問い合わせ</a></li>
+                    <li><a href="#contact">お招き</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- メインビジュアル -->
     <section id="home" class="hero">
-        <div class="hero-banner-container">
-            <img src="banner.png" alt="吉本陽太 小学生ピアノ演奏ボランティア" class="hero-banner-img">
-            <div class="hero-btn-wrap">
-                <a href="#contact" class="btn hero-btn">演奏に呼んでみる</a>
-            </div>
+        <div class="hero-content">
+            <h2>おじいちゃん、おばあちゃんへ<br>大好きなピアノの音色を届けます</h2>
+            <p>小学6年生の「ひなたろう」こと吉本陽太です。老人ホームやシニア施設で、心を込めてピアノを演奏するボランティア活動をしています。</p>
+            <a href="#contact" class="btn">演奏に呼んでみる</a>
         </div>
     </section>
 
-    <!-- プロフィールセクション -->
     <section id="profile" class="section">
         <div class="container">
             <h2 class="section-title">プロフィール</h2>
             <div class="profile-layout">
                 <div class="profile-image">
-                    <img src="profile.jpg" alt="吉本陽太（ひなたろう）のプロフィール写真" class="profile-img-file">
+                    <div class="image-placeholder">🎹</div>
                 </div>
                 <div class="profile-text">
                     <h3>吉本 陽太（よしもと ひなた）</h3>
                     <p class="nickname">ニックネーム：ひなたろう（小学6年生）</p>
-                    <p>小学2年生のときからピアノを習い始めました。音楽が大好きで、自分が弾くピアノで誰かが笑顔になってくれたら一番嬉しいなと思い、老人ホームでの演奏ボランティアを始めました。</p>
+                    <p>4歳のときからピアノを習い始めました。音楽が大好きで、自分が弾くピアノで誰かが笑顔になってくれたら一番嬉しいなと思い、老人ホームでの演奏ボランティアを始めました。</p>
                     <h4>★ すきなこと・得意なこと</h4>
                     <ul>
                         <li>もちろんピアノを弾くこと！</li>
-                        <li>歴史の勉強（戦国武将や昔の歴史が大好きです！）</li>
+                        <li>歴史の勉強（戦国武将が大好きです！）</li>
                         <li>おじいちゃん、おばあちゃんとおしゃべりすること</li>
-                        <li>きょうすきを見ること！恋愛したい！（笑）</li>
+                        <li>実はヒミツの趣味が……（笑）</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 活動についてセクション -->
     <section id="activity" class="section bg-light">
         <div class="container">
             <h2 class="section-title">活動について</h2>
@@ -87,33 +81,30 @@
         </div>
     </section>
 
-    <!-- お問い合わせ・依頼フォーム -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">演奏のお招き・お問い合わせ</h2>
             <p class="section-desc">「うちの施設に引きに来てほしい！」「一度お話を聞いてみたい」など、まずはお気軽にご連絡ください。学校の休日に合わせてお伺いします。（保護者が管理・同行いたします）</p>
+            
             <form id="volunteer-form" class="contact-form">
-                <input type="hidden" name="_subject" value="【ホームページ】ピアノボランティアのお問い合わせ">
-                
                 <div class="form-group">
                     <label for="facility-name">施設名 / 団体名</label>
-                    <input type="text" id="facility-name" name="施設名・団体名" required placeholder="例：あたたかホーム名古屋">
+                    <input type="text" id="facility-name" required placeholder="例：あたたかホーム名古屋">
                 </div>
                 <div class="form-group">
                     <label for="client-name">お名前（ご担当者様）</label>
-                    <input type="text" id="client-name" name="お名前" required placeholder="例：山田 太郎">
+                    <input type="text" id="client-name" required placeholder="例：山田 太郎">
                 </div>
                 <div class="form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" id="email" name="返信用メールアドレス" required placeholder="例：example@mail.com">
+                    <input type="email" id="email" required placeholder="例：example@mail.com">
                 </div>
                 <div class="form-group">
                     <label for="message">ご希望の日程やメッセージ</label>
-                    <textarea id="message" name="お問い合わせ内容" rows="5" placeholder="例：日曜日のおやつタイムに演奏してほしい、など"></textarea>
+                    <textarea id="message" rows="5" placeholder="例：日曜日のおやつタイムに演奏してほしい、など"></textarea>
                 </div>
                 <button type="submit" class="btn submit-btn">メッセージを送る</button>
             </form>
-           
             <div id="form-thanks" class="thanks-message">
                 <h3>メッセージありがとうございます！</h3>
                 <p>内容を確認し、保護者（大人）より折り返しご連絡いたします。しばらくお待ちください。</p>
@@ -121,7 +112,6 @@
         </div>
     </section>
 
-    <!-- フッター -->
     <footer>
         <p>&copy; 2026 ひなたろうのピアノボランティア. All Rights Reserved. (Supported by parents)</p>
     </footer>
