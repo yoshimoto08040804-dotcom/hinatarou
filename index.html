@@ -92,26 +92,28 @@
         <div class="container">
             <h2 class="section-title">演奏のお招き・お問い合わせ</h2>
             <p class="section-desc">「うちの施設に引きに来てほしい！」「一度お話を聞いてみたい」など、まずはお気軽にご連絡ください。学校の休日に合わせてお伺いします。（保護者が管理・同行いたします）</p>
-            
             <form id="volunteer-form" class="contact-form">
+                <input type="hidden" name="_subject" value="【ホームページ】ピアノボランティアのお問い合わせ">
+                
                 <div class="form-group">
                     <label for="facility-name">施設名 / 団体名</label>
-                    <input type="text" id="facility-name" required placeholder="例：あたたかホーム名古屋">
+                    <input type="text" id="facility-name" name="施設名・団体名" required placeholder="例：あたたかホーム名古屋">
                 </div>
                 <div class="form-group">
                     <label for="client-name">お名前（ご担当者様）</label>
-                    <input type="text" id="client-name" required placeholder="例：山田 太郎">
+                    <input type="text" id="client-name" name="お名前" required placeholder="例：山田 太郎">
                 </div>
                 <div class="form-group">
                     <label for="email">メールアドレス</label>
-                    <input type="email" id="email" required placeholder="例：example@mail.com">
+                    <input type="email" id="email" name="返信用メールアドレス" required placeholder="例：example@mail.com">
                 </div>
                 <div class="form-group">
                     <label for="message">ご希望の日程やメッセージ</label>
-                    <textarea id="message" rows="5" placeholder="例：日曜日のおやつタイムに演奏してほしい、など"></textarea>
+                    <textarea id="message" name="お問い合わせ内容" rows="5" placeholder="例：日曜日のおやつタイムに演奏してほしい、など"></textarea>
                 </div>
                 <button type="submit" class="btn submit-btn">メッセージを送る</button>
             </form>
+           
             <div id="form-thanks" class="thanks-message">
                 <h3>メッセージありがとうございます！</h3>
                 <p>内容を確認し、保護者（大人）より折り返しご連絡いたします。しばらくお待ちください。</p>
