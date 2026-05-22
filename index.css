@@ -171,16 +171,19 @@ nav ul li a:hover {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-width: 250px; /* 横並びのときの最低限の幅を確保 */
 }
 
-/* アップロードした写真のスタイル */
-.profile-img-file {
-    width: 250px;
-    height: 250px;
-    object-fit: cover; /* 写真の縦横比を崩さずに枠いっぱいに広げる設定 */
-    border-radius: 50%; /* 写真を正円に切り抜く */
-    border: 5px solid white;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+/* 陽太くんの写真をがっちり固定して丸く切り抜く設定 */
+.profile-image img {
+    width: 240px !important;       /* 横幅を240pxに固定 */
+    height: 240px !important;      /* 縦幅も240pxに固定して正方形にする */
+    object-fit: cover !important;  /* 縦長写真でも引き伸ばさず、中央を綺麗にくり抜く */
+    object-position: center 35%;   /* くり抜く位置を少し上め（顔の中心）に微調整 */
+    border-radius: 50%;            /* 完全な丸にする */
+    border: 5px solid white;       /* 温かみのある白い太枠 */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* 柔らかい影 */
 }
 
 .profile-text {
