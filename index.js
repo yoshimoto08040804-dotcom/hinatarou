@@ -1,63 +1,121 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('volunteer-form');
-    const thanksMessage = document.getElementById('form-thanks');
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ひなたろうのピアノボランティア | 吉本陽太 公式サイト</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            // 通常のページ遷移をストップ
-            e.preventDefault();
+    <header>
+        <div class="header-container">
+            <h1 class="logo">ひなたろうのピアノボランティア</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">ホーム</a></li>
+                    <li><a href="#profile">プロフィール</a></li>
+                    <li><a href="#activity">活動について</a></li>
+                    <li><a href="#contact">お招き</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-            // ★ここに通知を受け取りたいメールアドレスを入力してください
-            const YOUR_EMAIL = 'yoshimoto08040804@gmail.com'; 
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>おじいちゃん、おばあちゃんへ<br>大好きなピアノの音色を届けます</h2>
+            <p>小学6年生の「ひなたろう」こと吉本陽太です。老人ホームやシニア施設で、心を込めてピアノを演奏するボランティア活動をしています。</p>
+            <a href="#contact" class="btn">演奏に呼んでみる</a>
+        </div>
+    </section>
 
-            // 連打防止のためボタンを無効化
-            const submitBtn = form.querySelector('.submit-btn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = '送信中...';
+    <section id="profile" class="section">
+        <div class="container">
+            <h2 class="section-title">プロフィール</h2>
+            <div class="profile-layout">
+                <div class="profile-image">
+                    <div class="image-placeholder">🎹</div>
+                </div>
+                <div class="profile-text">
+                    <h3>吉本 陽太（よしもと ひなた）</h3>
+                    <p class="nickname">ニックネーム：ひなたろう（小学6年生）</p>
+                    <p>4歳のときからピアノを習い始めました。音楽が大好きで、自分が弾くピアノで誰かが笑顔になってくれたら一番嬉しいなと思い、老人ホームでの演奏ボランティアを始めました。</p>
+                    <h4>★ すきなこと・得意なこと</h4>
+                    <ul>
+                        <li>もちろんピアノを弾くこと！</li>
+                        <li>おじいちゃん、おばあちゃんとおしゃべりすること</li>
+                        <li>歴史の勉強（旧石器時代と平安時代が大好きです！）打製石器作りたい！蹴鞠してみたい！</li>
+                        <li>きょうすきをみること！恋愛したい！（笑）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // フォームデータの収集
-            const formData = new FormData(form);
+    <section id="activity" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">活動について</h2>
+            <p class="section-desc">施設のみなさんが一緒に歌ったり、懐かしい気持ちになったりできる曲を中心に演奏しています。リクエストにもできる限りお応えします！</p>
+            
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">🎶</div>
+                    <h3>えんそう曲のれい</h3>
+                    <p>「ふるさと」「上を向いて歩こう」「川の流れのように」など、みなさんがよく知っている歌謡曲や唱歌、心が落ち着くクラシック曲などを演奏します。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌸</div>
+                    <h3>大切にしていること</h3>
+                    <p>ただピアノを弾くだけでなく、手拍子を合わせたり、演奏の合間におしゃべりをしたりして、温かくて楽しい時間を一緒に過ごすことを大切にしています。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💝</div>
+                    <h3>費用について</h3>
+                    <p>ボランティア活動ですので、演奏に対する費用（出演料）は一切いただきません。ピアノがある施設であれば、どこへでも喜んでお伺いします。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            // FormSubmitのAJAXエンドポイントへ非同期送信
-            fetch(`https://formsubmit.co/ajax/${YOUR_EMAIL}`, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // 送信成功：フォームを消してサンクスメッセージを表示
-                    form.style.display = 'none';
-                    thanksMessage.style.display = 'block';
-                    thanksMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    throw new Error('送信エラー');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('ごめんなさい、送信中にエラーが発生しました。時間をおいてもう一度お試しください。');
-                // エラー時はボタンを元に戻す
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'メッセージを送る';
-            });
-        });
-    }
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">演奏のお招き・お問い合わせ</h2>
+            <p class="section-desc">「うちの施設に引きに来てほしい！」「一度お話を聞いてみたい」など、まずはお気軽にご連絡ください。学校の休日に合わせてお伺いします。（保護者が管理・同行いたします）</p>
+            
+            <form id="volunteer-form" class="contact-form">
+                <div class="form-group">
+                    <label for="facility-name">施設名 / 団体名</label>
+                    <input type="text" id="facility-name" required placeholder="例：あたたかホーム名古屋">
+                </div>
+                <div class="form-group">
+                    <label for="client-name">お名前（ご担当者様）</label>
+                    <input type="text" id="client-name" required placeholder="例：山田 太郎">
+                </div>
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input type="email" id="email" required placeholder="例：example@mail.com">
+                </div>
+                <div class="form-group">
+                    <label for="message">ご希望の日程やメッセージ</label>
+                    <textarea id="message" rows="5" placeholder="例：日曜日のおやつタイムに演奏してほしい、など"></textarea>
+                </div>
+                <button type="submit" class="btn submit-btn">メッセージを送る</button>
+            </form>
+            <div id="form-thanks" class="thanks-message">
+                <h3>メッセージありがとうございます！</h3>
+                <p>内容を確認し、保護者（大人）より折り返しご連絡いたします。しばらくお待ちください。</p>
+            </div>
+        </div>
+    </section>
 
-    // ナビゲーションのなめらかなスクロール設定
-    const links = document.querySelectorAll('nav a');
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const targetId = link.getAttribute('href');
-            if (targetId.startsWith('#')) {
-                e.preventDefault();
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    });
-});
+    <footer>
+        <p>&copy; 2026 ひなたろうのピアノボランティア. All Rights Reserved. (Supported by parents)</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
